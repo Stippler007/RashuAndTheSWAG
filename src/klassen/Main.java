@@ -53,8 +53,7 @@ public class Main
     f.setTitle("Rashu and the #SWAG");
     f.makeStrat();
     
-    enemys.add(new AngryBaguette(100, 100,player,200,enemys));
-    enemys.add(new AngryBaguette(100, 100,player,200,enemys));
+    
     items.add(new Item(300, 300));
     
 //    JFileChooser fc=new JFileChooser();
