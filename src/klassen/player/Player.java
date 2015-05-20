@@ -104,28 +104,28 @@ public class Player
   {  
     if(rect.intersects(bounding))
     {
-      double vonlinks=rect.x+rect.width-bounding.x;
-      double vonoben=rect.y+rect.height-bounding.y;
-      double vonrechts=bounding.x+bounding.width-rect.x;
-      double vonunten=bounding.y + bounding.height - rect.y;
+      double fromleft=rect.x+rect.width-bounding.x;
+      double fromup=rect.y+rect.height-bounding.y;
+      double fromright=bounding.x+bounding.width-rect.x;
+      double fromdown=bounding.y + bounding.height - rect.y;
 
-      if(vonlinks<vonoben&&vonlinks<vonrechts&&vonlinks<vonunten)
+      if(fromleft<fromup&&fromleft<fromright&&fromleft<fromdown)
       {
-        bounding.x+=vonlinks;
+        bounding.x+=fromleft;
         knockBackX=enemy.getKnockBack();
       }
-      else if(vonoben<vonrechts&&vonoben<vonunten)
+      else if(fromup<fromright&&fromup<fromdown)
       {
-        bounding.y+=vonoben;
+        bounding.y+=fromup;
         knockBackY=enemy.getKnockBack();
       }
-      else if(vonrechts<vonunten)
+      else if(fromright<fromdown)
       {
-        bounding.x-=vonrechts;
+        bounding.x-=fromright;
         knockBackX=-enemy.getKnockBack();
       }
       else{
-        bounding.y-=vonunten;
+        bounding.y-=fromdown;
         knockBackY=-enemy.getKnockBack();
       }
       if(enemy.isDangerous())
