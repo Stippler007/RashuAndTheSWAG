@@ -5,6 +5,8 @@
  */
 package klassen.enemy;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
 import klassen.ImageFactory;
 import klassen.player.Player;
 import klassen.player.PlayerSpritzer;
@@ -168,6 +170,7 @@ public abstract class Enemy
       health-=spritzer.getDamage();
     }
   }
+  
   public Rectangle getBounding()
   {
     return bounding;
@@ -202,5 +205,8 @@ public abstract class Enemy
   {
     return maxHealth;
   }
-  
+  public void draw(Graphics2D g)
+  {
+    g.drawImage(getLook(), bounding.x, bounding.y, null);
+  }
 }

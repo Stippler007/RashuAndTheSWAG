@@ -17,6 +17,7 @@ import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import klassen.enemy.swordFigher.Pornstar;
 import klassen.item.Item;
 
 
@@ -53,6 +54,7 @@ public class Main
     f.setVisible(true);
     f.makeStrat();
     
+    enemys.add(new Pornstar(600, 600, player, enemys, 100));
     
     items.add(new Item(300, 300));
     

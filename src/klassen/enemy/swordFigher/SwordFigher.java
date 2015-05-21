@@ -5,10 +5,12 @@
  */
 package klassen.enemy.swordFigher;
 
+import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+import klassen.ImageFactory;
 import klassen.enemy.Enemy;
 import klassen.player.Player;
 
@@ -22,13 +24,16 @@ public abstract class SwordFigher extends Enemy
   protected Line2D swordBounding;
   
   // the angle to the player + x radiant
-  protected double angle;
-  protected double deltaAngle;
-  protected double distanceAngle=Math.PI/2;
+  protected double swordAngle;
+  protected double deltaSwordAngle;
+  protected double distanceSwordAngle=Math.PI/2;
+  protected double swordSpeed=Math.PI;
+  
   
   public SwordFigher(int x,int y,Player player, LinkedList<Enemy> enemys, int speed)
   {
     super(new Rectangle(x,y,50,50), player, enemys, speed);
+    swordLook=ImageFactory.getImageFactory().getLooks("dildo");
     swordBounding=new Line2D.Double(bounding.x+bounding.width/2, bounding.y+bounding.height/2,
             swordLook.getWidth(), bounding.y+bounding.height/2);
   }
@@ -36,12 +41,56 @@ public abstract class SwordFigher extends Enemy
   @Override
   public void update(float tslf)
   {
-    
+    deltaSwordAngle+=swordSpeed*tslf;
+    updateSwordBounding();
     super.update(tslf);
   }
   
   public void startStrike()
   {
-    
+    swordAngle=getAngle();
+    deltaSwordAngle=swordAngle-distanceSwordAngle/2;
   }
+  private void updateSwordBounding()
+  {
+    int x1=bounding.x+(int)bounding.getWidth()/2;
+    int y1=bounding.y+(int)bounding.getHeight()/2;
+    int x2=(int)(swordBounding.getX1()+(Math.cos(deltaSwordAngle)*swordLook.getWidth()));
+    int y2=(int)(swordBounding.getY1()+(Math.sin(deltaSwordAngle)*swordLook.getHeight()));
+    
+    swordBounding.setLine(x1, y1, x2, y2);
+  }
+  private double getAngle()
+  {
+    double a=(player.getBounding().x+player.getBounding().width/2)-(bounding.x+bounding.width/2);
+    double b=(player.getBounding().y+player.getBounding().height/2)-(bounding.y+bounding.height/2);
+    
+    double turn=Math.atan(b/a);
+    if(a<0)
+    {
+      turn+=2.3561944901923;
+    }
+     return turn; 
+  }
+  
+  public double getSwordAngle()
+  {
+    return deltaSwordAngle;
+  }
+
+  public BufferedImage getSwordLook()
+  {
+    return swordLook;
+  }
+  
+  @Override
+  public void draw(Graphics2D g)
+  {
+    g.rotate(getSwordAngle(),swordBounding.getX1(),swordBounding.getY1());
+    g.drawImage(getSwordLook(), (int)swordBounding.getX1()-swordLook.getWidth()/2,
+            (int)swordBounding.getY1()-swordLook.getWidth()/2, null);
+    g.rotate(-getSwordAngle(),swordBounding.getX1(),swordBounding.getY1());
+    super.draw(g);
+  }
+  
 }

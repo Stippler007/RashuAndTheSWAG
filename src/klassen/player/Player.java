@@ -9,6 +9,7 @@ import klassen.ImageFactory;
 import klassen.KL;
 import klassen.enemy.Enemy;
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.awt.event.KeyEvent;

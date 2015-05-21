@@ -79,7 +79,7 @@ public class GUI extends JFrame
       g.fillRect(enemy.getBounding().x, enemy.getBounding().y-5, enemy.getBounding().width, 3);
       g.setColor(Color.green);
       g.fillRect(enemy.getBounding().x, enemy.getBounding().y-5, (int)(enemy.getBounding().width*(enemy.getHealth()/enemy.getMaxHealth())), 3);
-      g.drawImage(enemy.getLook() , enemy.getBounding().x, enemy.getBounding().y,null);
+      enemy.draw(g);
     }
     for (Item item : items)
     {
