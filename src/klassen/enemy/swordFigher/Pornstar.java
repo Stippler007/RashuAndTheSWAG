@@ -5,7 +5,9 @@
  */
 package klassen.enemy.swordFigher;
 
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+import klassen.ImageFactory;
 import klassen.enemy.Enemy;
 import klassen.player.Player;
 
@@ -19,7 +21,7 @@ public class Pornstar extends SwordFigher
   public Pornstar(int x, int y, Player player, LinkedList<Enemy> enemys, int speed)
   {
     super(x, y, player, enemys, speed);
-    
+    setLook(ImageFactory.getImageFactory().getLooks("pornstar"));
   }
   
 }

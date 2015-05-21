@@ -54,7 +54,7 @@ public abstract class Enemy
     this.health = health;
   }
   
-  public void setLook(BufferedImage looks[])
+  public void setLook(BufferedImage... looks)
   {
     this.look = looks;
     bounding.width=looks[0].getWidth();

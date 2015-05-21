@@ -36,6 +36,7 @@ public abstract class SwordFigher extends Enemy
     swordLook=ImageFactory.getImageFactory().getLooks("dildo");
     swordBounding=new Line2D.Double(bounding.x+bounding.width/2, bounding.y+bounding.height/2,
             swordLook.getWidth(), bounding.y+bounding.height/2);
+    startStrike();
   }
   
   @Override
@@ -43,9 +44,17 @@ public abstract class SwordFigher extends Enemy
   {
     deltaSwordAngle+=swordSpeed*tslf;
     updateSwordBounding();
+    collisionSwordPlayer(tslf);
+    
     super.update(tslf);
   }
-  
+  public void collisionSwordPlayer(float tslf)
+  {
+    if(swordBounding.intersects(player.getBounding()))
+    {
+      player.setHealth(player.getHealth()-getDamage()*tslf);
+    }
+  }
   public void startStrike()
   {
     swordAngle=getAngle();
@@ -55,8 +64,8 @@ public abstract class SwordFigher extends Enemy
   {
     int x1=bounding.x+(int)bounding.getWidth()/2;
     int y1=bounding.y+(int)bounding.getHeight()/2;
-    int x2=(int)(swordBounding.getX1()+(Math.cos(deltaSwordAngle)*swordLook.getWidth()));
-    int y2=(int)(swordBounding.getY1()+(Math.sin(deltaSwordAngle)*swordLook.getHeight()));
+    int x2=(int)(swordBounding.getX1()+(Math.cos(swordAngle+deltaSwordAngle)*swordLook.getWidth()));
+    int y2=(int)(swordBounding.getY1()+(Math.sin(swordAngle+deltaSwordAngle)*swordLook.getWidth()));
     
     swordBounding.setLine(x1, y1, x2, y2);
   }
@@ -75,7 +84,15 @@ public abstract class SwordFigher extends Enemy
   
   public double getSwordAngle()
   {
-    return deltaSwordAngle;
+    double a=(swordBounding.getX1()-swordBounding.getX2());
+    double b=(swordBounding.getY1()-swordBounding.getY2());
+    
+    double turn=Math.atan(b/a);
+    if(a<0)
+    {
+      turn+=2.3561944901923;
+    }
+    return turn; 
   }
 
   public BufferedImage getSwordLook()

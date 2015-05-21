@@ -48,6 +48,12 @@ public class Player
     this.speed=speed;
     this.playerSpritzers=playerSpritzers;
   }
+
+  public void setHealth(float health)
+  {
+    this.health = health;
+  }
+  
   public void update(float tslf) //tslf time since last frame
   {
     if(KL.keys[KeyEvent.VK_W])
