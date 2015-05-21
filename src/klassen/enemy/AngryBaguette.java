@@ -29,7 +29,7 @@ public class AngryBaguette extends Enemy
   {
 //    bounding.x+=speedX;
 //    bounding.y+=speedY;
-    moveZiel(player.getBounding().x+player.getBounding().width/2,
+    moveTarget(player.getBounding().x+player.getBounding().width/2,
              player.getBounding().y+player.getBounding().height/2,tslf);
     
     super.update(tslf);
