@@ -64,8 +64,8 @@ public abstract class SwordFigher extends Enemy
   {
     int x1=bounding.x+(int)bounding.getWidth()/2;
     int y1=bounding.y+(int)bounding.getHeight()/2;
-    int x2=(int)(swordBounding.getX1()+(Math.cos(swordAngle+deltaSwordAngle)*swordLook.getWidth()));
-    int y2=(int)(swordBounding.getY1()+(Math.sin(swordAngle+deltaSwordAngle)*swordLook.getWidth()));
+    int x2=(int)(x1+(Math.cos(swordAngle+deltaSwordAngle)*swordLook.getHeight()));
+    int y2=(int)(y1+(Math.sin(swordAngle+deltaSwordAngle)*swordLook.getHeight()));
     
     swordBounding.setLine(x1, y1, x2, y2);
   }
