@@ -36,16 +36,12 @@ public abstract class SwordFigher extends Enemy
   @Override
   public void update(float tslf)
   {
-    if(deltaAngle<)
-    {
-      
-    }
-      
+    
     super.update(tslf);
   }
   
   public void startStrike()
   {
-    angle=
+    
   }
 }
