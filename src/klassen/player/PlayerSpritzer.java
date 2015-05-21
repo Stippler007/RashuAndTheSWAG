@@ -7,7 +7,6 @@ package klassen.player;
 
 import klassen.ImageFactory;
 import klassen.KL;
-import com.sun.glass.events.KeyEvent;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 

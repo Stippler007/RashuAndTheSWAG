@@ -8,10 +8,10 @@ package klassen.player;
 import klassen.ImageFactory;
 import klassen.KL;
 import klassen.enemy.Enemy;
-import com.sun.glass.events.KeyEvent;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -47,7 +47,7 @@ public class Player
     this.speed=speed;
     this.playerSpritzers=playerSpritzers;
   }
-  public void update(float tslf)
+  public void update(float tslf) //tslf time since last frame
   {
     if(KL.keys[KeyEvent.VK_W])
     {

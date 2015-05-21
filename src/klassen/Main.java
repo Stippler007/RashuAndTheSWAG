@@ -14,11 +14,11 @@ import klassen.enemy.EnemySpritzer;
 import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 import java.util.Random;
-import javafx.stage.FileChooser;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import klassen.item.Item;
+
 
 /**
  *
@@ -45,12 +45,12 @@ public class Main
     GUI f=new GUI(player,playerSpritzers,enemys,enemySpritzers,bg,items);
     
 //    f.setUndecorated(true);
-    f.setVisible(true);
     f.setSize(width,height);
     f.setResizable(false);
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setLocationRelativeTo(null);
     f.setTitle("Rashu and the #SWAG");
+    f.setVisible(true);
     f.makeStrat();
     
     
@@ -176,3 +176,4 @@ public class Main
     items.add(new Item(r.nextInt(1000), r.nextInt(700)));
   }
 }
+

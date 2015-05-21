@@ -18,6 +18,7 @@ import java.util.LinkedList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import klassen.item.Item;
+import java.awt.Dimension;
 
 /**
  *
@@ -113,5 +114,11 @@ public class GUI extends JFrame
     
     g.dispose();
     strat.show();
+  }
+
+  @Override
+  public Dimension getPreferredSize()
+  {
+    return new Dimension(1024, 768);
   }
 }
