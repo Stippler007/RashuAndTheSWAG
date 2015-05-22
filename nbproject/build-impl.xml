@@ -1410,4 +1410,8 @@ is divided into following sections:
             </propertyset>
         </ant>
     </target>
+    <copy todir="dist/sounds">
+        <fileset dir="sounds"
+        excludes="**/*.java" />
+    </copy>
 </project>

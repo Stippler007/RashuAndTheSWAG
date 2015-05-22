@@ -80,7 +80,7 @@ public abstract class Enemy
     }
     collisions(tslf);
   }
-  protected void moveZiel(int x,int y,float tslf)
+  protected void moveTarget(int x,int y,float tslf)
   {
     speedX = x - (bounding.x+bounding.width/2);
     speedY = y - (bounding.y+bounding.height/2);

@@ -34,7 +34,7 @@ public class ImageFactory
       looks.put("gameover", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/gameOverScreen/gameover.jpg")));
       looks.put("illuminatitriangle", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/item/illuminatitriangle.jpg")));
       looks.put("dildo", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/enemy/sword/pornstar/dildo.jpg")));
-      looks.put("dildo", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/enemy/sword/pornstar/pornstar.png")));
+      looks.put("pornstar", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/enemy/sword/pornstar/pornstar.png")));
     } catch (IOException ex)
     {
       Logger.getLogger(ImageFactory.class.getName()).log(Level.SEVERE, null, ex);
