@@ -20,6 +20,8 @@ import javax.swing.JOptionPane;
 import klassen.enemy.swordFigher.Pornstar;
 import klassen.item.Item;
 
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -27,6 +29,7 @@ import klassen.item.Item;
  */
 public class Main
 {
+  private final static Logger LOGGER = Logger.getLogger(Main.class.getName()); 
   public static void main(String[] args)
   {
     int width=1024;
@@ -132,7 +135,7 @@ public class Main
             }
             catch(Exception ex)
             {
-              
+              LOGGER.warning("Illuminati sound not found");
             }
           }
           else
