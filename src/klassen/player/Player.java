@@ -30,8 +30,8 @@ public class Player
   private float reloadTime=0f;
   private final float maxReloadTime=0.3f;
   
-  private float knockBackX;
-  private float knockBackY;
+  public float knockBackX;
+  public float knockBackY;
   private float backKnockBack=0.5f;
   
   private float health=100;
@@ -106,6 +106,11 @@ public class Player
       knockBackX*=backKnockBack;
       knockBackY*=backKnockBack;
     }
+    
+    if(bounding.x<0)bounding.x=0;
+    if(bounding.x>1024-bounding.width)bounding.x=1024-bounding.width;
+    if(bounding.y<0)bounding.y=0;
+    if(bounding.y>768-bounding.height)bounding.y=768-bounding.height;
   }
   public void touchedEnemy(Rectangle rect,Enemy enemy)
   {  

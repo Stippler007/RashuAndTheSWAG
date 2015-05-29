@@ -29,9 +29,9 @@ public abstract class Enemy
   private float knockBack=50;
   protected float speedX;
   protected float speedY;
-  private int speed;
-  private boolean dangerous=true;
-  private float damage=10;
+  protected int speed;
+  protected boolean dangerous=true;
+  protected float damage=10;
   
   private float health=100;
   private float maxHealth=100;
@@ -205,6 +205,7 @@ public abstract class Enemy
   {
     return maxHealth;
   }
+  
   public void draw(Graphics2D g)
   {
     g.drawImage(getLook(), bounding.x, bounding.y, null);

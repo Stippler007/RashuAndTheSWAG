@@ -22,6 +22,7 @@ public class Pornstar extends SwordFigher
   {
     super(x, y, player, enemys, speed);
     setLook(ImageFactory.getImageFactory().getLooks("pornstar"));
+    damage=50;
   }
   
 }

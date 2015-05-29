@@ -57,7 +57,7 @@ public class Main
     f.setVisible(true);
     f.makeStrat();
     
-    enemys.add(new Pornstar(600, 600, player, enemys, 100));
+    
     
     items.add(new Item(300, 300));
     
@@ -156,13 +156,21 @@ public class Main
       else
       {
         f.drawGameOverScreen();
+        if(KL.keys[KeyEvent.VK_ENTER])
+        {
+          enemys.clear();
+          items.clear();
+          enemySpritzers.clear();
+          playerSpritzers.clear();
+          player.setHealth(player.getMaxHelath());
+        }
       }
       try {Thread.sleep(15);} catch (InterruptedException ex) {}
     }
   }
+  private static  int zahl=0;
   private static void newRound(LinkedList<Enemy> enemys,Player player)
   {
-    int zahl=new Random().nextInt(1);
     switch(zahl)
     {
       case 0:
@@ -171,6 +179,16 @@ public class Main
         enemys.add(new AngryBaguette(1024, 375, player, 200, enemys));
         enemys.add(new AngryBaguette(500, -50, player, 200, enemys));
         enemys.add(new AngryBaguette(500, 750, player, 200, enemys));
+        zahl++;
+      }
+      break;
+      case 1:
+      {
+        enemys.add(new Pornstar(-50, 375, player, enemys, 150));
+        enemys.add(new AngryBaguette(1024, 375, player, 200, enemys));
+        enemys.add(new AngryBaguette(500, -50, player, 200, enemys));
+        enemys.add(new Pornstar(500, 750, player, enemys, 150));
+        zahl--;
       }
       break;
     }

@@ -5,6 +5,7 @@
  */
 package klassen.enemy.swordFigher;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
@@ -27,8 +28,9 @@ public abstract class SwordFigher extends Enemy
   protected double swordAngle;
   protected double deltaSwordAngle;
   protected double distanceSwordAngle=Math.PI/2;
-  protected double swordSpeed=Math.PI;
+  protected double swordSpeed=Math.PI/1.5;
   
+  protected boolean striking=true;
   
   public SwordFigher(int x,int y,Player player, LinkedList<Enemy> enemys, int speed)
   {
@@ -36,7 +38,7 @@ public abstract class SwordFigher extends Enemy
     swordLook=ImageFactory.getImageFactory().getLooks("dildo");
     swordBounding=new Line2D.Double(bounding.x+bounding.width/2, bounding.y+bounding.height/2,
             swordLook.getWidth(), bounding.y+bounding.height/2);
-    startStrike();
+    dangerous=false;
   }
   
   @Override
@@ -46,22 +48,42 @@ public abstract class SwordFigher extends Enemy
     updateSwordBounding();
     collisionSwordPlayer(tslf);
     
+    moveTarget(player.getBounding().x, player.getBounding().y, tslf);
+    
     super.update(tslf);
+    striking=true;
   }
-  public void collisionSwordPlayer(float tslf)
+  protected void collisionSwordPlayer(float tslf)
   {
     if(swordBounding.intersects(player.getBounding()))
     {
-      player.setHealth(player.getHealth()-getDamage()*tslf);
+      player.setHealth(player.getHealth()-getDamage());
+      swordKnockBack();
     }
   }
-  public void startStrike()
+  protected void swordKnockBack()
   {
-    swordAngle=getAngle();
-    deltaSwordAngle=swordAngle-distanceSwordAngle/2;
+    float vectorX = bounding.x - (player.getBounding().x+player.getBounding().width/2);
+    float vectorY = bounding.y - (player.getBounding().y+player.getBounding().height/2);
+    
+    float help = (float)Math.sqrt(vectorX*vectorX+vectorY*vectorY);
+    
+    vectorX/=help;
+    vectorY/=help;
+    
+    vectorX*=speed;
+    vectorY*=speed;
+    
+    player.knockBackX=-vectorX;
+    player.knockBackY=-vectorY;
   }
   private void updateSwordBounding()
   {
+    if(swordAngle<distanceSwordAngle)
+    {
+      swordAngle=0;
+    }
+    
     int x1=bounding.x+(int)bounding.getWidth()/2;
     int y1=bounding.y+(int)bounding.getHeight()/2;
     int x2=(int)(x1+(Math.cos(swordAngle+deltaSwordAngle)*swordLook.getHeight()));
@@ -77,7 +99,7 @@ public abstract class SwordFigher extends Enemy
     double turn=Math.atan(b/a);
     if(a<0)
     {
-      turn+=2.3561944901923;
+      turn+=Math.PI;
     }
      return turn; 
   }
@@ -90,9 +112,9 @@ public abstract class SwordFigher extends Enemy
     double turn=Math.atan(b/a);
     if(a<0)
     {
-      turn+=2.3561944901923;
+      turn+=Math.PI;
     }
-    return turn; 
+    return turn+Math.PI/2; 
   }
 
   public BufferedImage getSwordLook()
@@ -104,9 +126,12 @@ public abstract class SwordFigher extends Enemy
   public void draw(Graphics2D g)
   {
     g.rotate(getSwordAngle(),swordBounding.getX1(),swordBounding.getY1());
-    g.drawImage(getSwordLook(), (int)swordBounding.getX1()-swordLook.getWidth()/2,
-            (int)swordBounding.getY1()-swordLook.getWidth()/2, null);
-    g.rotate(-getSwordAngle(),swordBounding.getX1(),swordBounding.getY1());
+    if(striking)
+    {
+      g.drawImage(getSwordLook(), (int)swordBounding.getX1()-swordLook.getWidth()/2,
+      (int)swordBounding.getY1()-swordLook.getWidth()/2, null);
+      g.rotate(-getSwordAngle(),swordBounding.getX1(),swordBounding.getY1());
+    }
     super.draw(g);
   }
   
