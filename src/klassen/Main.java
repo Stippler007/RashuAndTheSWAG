@@ -17,10 +17,11 @@ import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import klassen.enemy.swordFigher.Pornstar;
+import klassen.enemy.swordFighter.Pornstar;
 import klassen.item.Item;
 
 import java.util.logging.Logger;
+import klassen.enemy.swordFighter.Pirate;
 
 
 /**
@@ -181,16 +182,23 @@ public class Main
         enemys.add(new AngryBaguette(500, 750, player, 200, enemys));
         zahl++;
       }
-      break;
+        break;
       case 1:
       {
         enemys.add(new Pornstar(-50, 375, player, enemys, 150));
         enemys.add(new AngryBaguette(1024, 375, player, 200, enemys));
         enemys.add(new AngryBaguette(500, -50, player, 200, enemys));
         enemys.add(new Pornstar(500, 750, player, enemys, 150));
-        zahl--;
+        zahl++;
       }
-      break;
+        break;
+      case 2:
+      {
+        enemys.add(new Pirate(-50, 375, player, enemys, 150));
+        enemys.add(new Pirate(1024, 375, player, enemys, 150));
+        zahl-=2;
+      }
+        break;
     }
   }
   private static void newTriangle(LinkedList<Item> items)
