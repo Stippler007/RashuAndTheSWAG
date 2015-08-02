@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package klassen.enemy.meeleFigher;
+package klassen.enemy.swordFighter;
 
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import klassen.ImageFactory;
 import klassen.enemy.Enemy;
@@ -14,15 +15,13 @@ import klassen.player.Player;
  *
  * @author Stippler
  */
-public class Pirate extends SwordFigher
+public class Pornstar extends SwordFigher
 {
 
-  public Pirate(int x, int y, Player player, LinkedList<Enemy> enemys, int speed)
+  public Pornstar(int x, int y, Player player, LinkedList<Enemy> enemys, int speed)
   {
     super(x, y, player, enemys, speed);
-    setLook(ImageFactory.getImageFactory().getLooks("teegirl"));
-    swordLook=ImageFactory.getImageFactory().getLooks("saber");
-    setSwordSpeed(Math.PI/4);
+    setLook(ImageFactory.getImageFactory().getLooks("pornstar"));
     damage=50;
   }
   

@@ -17,7 +17,7 @@ public class AngryBaguette extends Enemy
   
   public AngryBaguette(int x,int y,Player player,int speed,LinkedList<Enemy> enemys)
   {
-    super(x,y,player,enemys,speed);
+    super(new Rectangle(x,y),player,enemys,speed);
     bounding=new Rectangle(x,y,super.getLook().getWidth(),super.getLook().getHeight());
     BufferedImage looks[]=new BufferedImage[1];
     looks[0]=ImageFactory.getImageFactory().getLooks("angrybaguette");

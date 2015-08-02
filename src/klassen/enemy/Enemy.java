@@ -26,9 +26,6 @@ public abstract class Enemy
   private BufferedImage look[]=new BufferedImage[1];
   protected Player player;
   
-  private float x;
-  private float y;
-  
   private float knockBack=50;
   protected float speedX;
   protected float speedY;
@@ -43,17 +40,15 @@ public abstract class Enemy
   private float knockBackY=0;
   private float backKnockBack=0.5f;
   
-  public Enemy(float x,float y,Player player,LinkedList<Enemy> enemys,int speed)
+  public Enemy(Rectangle bounding,Player player,LinkedList<Enemy> enemys,int speed)
   {
-    bounding=new Rectangle();
     look[0]=ImageFactory.getImageFactory().getLooks("enemynotfound");
+    this.bounding=bounding;
     this.player=player;
     this.speed=speed;
     this.enemys=enemys;
-    this.x=x;
-    this.y=y;
   }
-  
+
   public void setHealth(float health)
   {
     this.health = health;
@@ -80,21 +75,15 @@ public abstract class Enemy
   {
     if(knockBackX!=0||knockBackY!=0)
     {
-      x+=knockBackX;
-      y+=knockBackY;
+      bounding.x+=knockBackX;
+      bounding.y+=knockBackY;
       knockBackX*=backKnockBack;
       knockBackY*=backKnockBack;
     }
-    
     collisions(tslf);
-    
-    bounding.x=(int)x;
-    bounding.y=(int)y;
-    
   }
   protected void moveTarget(int x,int y,float tslf)
   {
-    System.out.println("x:"+x+"    y:"+y);
     speedX = x - (bounding.x+bounding.width/2);
     speedY = y - (bounding.y+bounding.height/2);
     
@@ -106,8 +95,8 @@ public abstract class Enemy
     speedX*=speed;
     speedY*=speed;
     
-    x+=(speedX*tslf);
-    y+=(speedY*tslf);
+    bounding.x+=(speedX*tslf);
+    bounding.y+=(speedY*tslf);
   }
   public void collisions(float tlsf)
   {
@@ -138,19 +127,19 @@ public abstract class Enemy
       
       if(nachrechts<nachlinks&&nachrechts<nachoben&&nachrechts<nachunten)
       {
-        x+=nachrechts;
+        bounding.x+=nachrechts;
       }
       else if(nachlinks<nachoben&&nachlinks<nachunten)
       {
-        x-=nachlinks;
+        bounding.x-=nachlinks;
       }
       else if(nachoben<nachunten)
       {
-        y-=nachoben;
+        bounding.y-=nachoben;
       }
       else if(nachoben>nachunten)
       {
-        y+=nachunten;
+        bounding.y+=nachunten;
       }
     }
   }
