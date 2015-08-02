@@ -17,11 +17,12 @@ import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import klassen.enemy.swordFighter.Pornstar;
+import klassen.enemy.meeleFigher.Pornstar;
 import klassen.item.Item;
 
 import java.util.logging.Logger;
-import klassen.enemy.swordFighter.Pirate;
+import klassen.enemy.meeleFigher.Pirate;
+import klassen.enemy.rangeFighter.Wizard;
 
 
 /**
@@ -61,7 +62,7 @@ public class Main
     
     
     items.add(new Item(300, 300));
-    
+    enemys.add(new Wizard(30, 30, player, enemys, enemySpritzers, 400));
 //    JFileChooser fc=new JFileChooser();
 //    fc.showSaveDialog(fc);
 //    try

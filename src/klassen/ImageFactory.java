@@ -37,6 +37,8 @@ public class ImageFactory
       looks.put("pornstar", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/enemy/sword/pornstar/pornstar.png")));
       looks.put("saber", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/enemy/sword/pirate/saber.png")));
       looks.put("teegirl", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/enemy/sword/pirate/teegirl2.JPG")));
+      looks.put("TwoHit", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/enemy/magician/TwoHit.JPG")));
+      looks.put("Zargon", ImageIO.read(getClass().getClassLoader().getResourceAsStream("gfx/enemy/magician/Zargon.jpg")));
     } catch (IOException ex)
     {
       Logger.getLogger(ImageFactory.class.getName()).log(Level.SEVERE, null, ex);

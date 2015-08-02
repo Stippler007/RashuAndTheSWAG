@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package klassen.enemy.swordFighter;
+package klassen.enemy.meeleFigher;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -34,7 +34,7 @@ public abstract class SwordFigher extends Enemy
   
   public SwordFigher(int x,int y,Player player, LinkedList<Enemy> enemys, int speed)
   {
-    super(new Rectangle(x,y,50,50), player, enemys, speed);
+    super(x,y, player, enemys, speed);
     this.swordLook=ImageFactory.getImageFactory().getLooks("dildo");
     this.swordBounding=new Line2D.Double(bounding.x+bounding.width/2, bounding.y+bounding.height/2,
             swordLook.getWidth(), bounding.y+bounding.height/2);
